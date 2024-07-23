@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Dose Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0ffe0;
+            border: 1px solid #b0ffb0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Medical Drug Dose Calculator</h2>
+    <div class="input-group">
+        <label for="weight">Patient's Weight (kg):</label>
+        <input type="number" id="weight" required>
+    </div>
+    <div class="input-group">
+        <label for="dosePerKg">Dose per kg (mg/kg):</label>
+        <input type="number" id="dosePerKg" required>
+    </div>
+    <button class="button" onclick="calculateDose()">Calculate Dose</button>
+
+    <div class="result" id="result" style="display:none;">
+        <h3>Total Dose:</h3>
+        <p id="dose"></p>
+    </div>
+</div>
+
+<script>
+    function calculateDose() {
+        var weight = document.getElementById('weight').value;
+        var dosePerKg = document.getElementById('dosePerKg').value;
+        
+        if (weight && dosePerKg) {
+            var totalDose = weight * dosePerKg;
+            document.getElementById('dose').innerText = totalDose + " mg";
+            document.getElementById('result').style.display = 'block';
+        } else {
+            alert('Please enter valid values for weight and dose per kg.');
+        }
+    }
+</script>
+
+</body>
+</html>
